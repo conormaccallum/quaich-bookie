@@ -59,6 +59,7 @@ select {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
   backdrop-filter: blur(12px);
+  min-width: 0;
 }
 
 .hero,
@@ -163,6 +164,7 @@ h1 {
 .board-grid {
   grid-template-columns: 1.2fr 0.8fr;
   margin-top: 20px;
+  min-width: 0;
 }
 
 .board-grid-single {
@@ -189,6 +191,7 @@ h1 {
 .ticket-list {
   display: grid;
   gap: 14px;
+  min-width: 0;
 }
 
 .top-space {
@@ -209,10 +212,17 @@ h1 {
   overflow-x: auto;
   max-width: 100%;
   width: 100%;
+  min-width: 0;
   padding-bottom: 0;
   margin-bottom: -14px;
   position: relative;
   z-index: 3;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.category-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .category-tab {
@@ -338,6 +348,7 @@ h1 {
   padding: 14px;
   display: grid;
   gap: 12px;
+  min-width: 0;
 }
 
 .market-row-compact {
@@ -353,6 +364,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   gap: 16px;
+  min-width: 0;
 }
 
 .ticket-name,
@@ -361,6 +373,7 @@ h1 {
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
+  min-width: 0;
 }
 
 .team-badge {
