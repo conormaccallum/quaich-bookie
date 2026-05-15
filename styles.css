@@ -194,7 +194,9 @@ h1 {
   margin-top: 20px;
   overflow-x: auto;
   padding-bottom: 0;
-  margin-bottom: -1px;
+  margin-bottom: -14px;
+  position: relative;
+  z-index: 3;
 }
 
 .category-tab {
@@ -209,6 +211,7 @@ h1 {
   font-weight: 800;
   cursor: pointer;
   white-space: nowrap;
+  box-shadow: none;
 }
 
 .category-tab small {
@@ -229,6 +232,7 @@ h1 {
   box-shadow: var(--shadow);
   position: relative;
   z-index: 2;
+  transform: translateY(1px);
 }
 
 .team-banner {
