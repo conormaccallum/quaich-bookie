@@ -124,6 +124,19 @@ h1 {
   flex-wrap: wrap;
 }
 
+.toggle-group {
+  display: grid;
+  gap: 8px;
+}
+
+.toggle-group-label {
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 .panel-head,
 .market-card-head,
 .market-row-main,
