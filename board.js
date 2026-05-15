@@ -7,6 +7,7 @@ const state = {
   oddsFormat: "american",
   activeCategory: "Outright",
   selectedMarkets: {},
+  selectedOutcomes: {},
 };
 
 const elements = {
@@ -47,10 +48,17 @@ function bindEvents() {
 
   elements.boardMarkets.addEventListener("change", (event) => {
     const select = event.target.closest("[data-market-select]");
-    if (!select) {
+    if (select) {
+      state.selectedMarkets[select.dataset.marketSelect] = select.value;
+      render();
       return;
     }
-    state.selectedMarkets[select.dataset.marketSelect] = select.value;
+
+    const outcomeSelect = event.target.closest("[data-outcome-select]");
+    if (!outcomeSelect) {
+      return;
+    }
+    state.selectedOutcomes[outcomeSelect.dataset.outcomeSelect] = outcomeSelect.value;
     render();
   });
 }
@@ -75,6 +83,12 @@ function ensureSelections() {
     const markets = categories[category];
     if (markets?.length && !state.selectedMarkets[category]) {
       state.selectedMarkets[category] = markets[0].id;
+    }
+  }
+
+  for (const market of state.data.markets) {
+    if (market.outcomes?.length && !state.selectedOutcomes[market.id]) {
+      state.selectedOutcomes[market.id] = market.outcomes[0].id;
     }
   }
 }
@@ -120,9 +134,7 @@ function render() {
         </div>
         ${renderMarketChooser(activeMarkets, selectedMarket.id)}
       </div>
-      <div class="stack">
-        ${selectedMarket.outcomes.map((outcome) => renderOutcomeCard(outcome)).join("")}
-      </div>
+      ${renderOutcomesSection(selectedMarket)}
     </article>
   `;
 }
@@ -145,6 +157,38 @@ function renderMarketChooser(markets, selectedMarketId) {
           .join("")}
       </select>
     </label>
+  `;
+}
+
+function renderOutcomesSection(market) {
+  if (market.outcomes.length > 4) {
+    const selectedOutcomeId = state.selectedOutcomes[market.id] || market.outcomes[0].id;
+    const selectedOutcome = market.outcomes.find((outcome) => outcome.id === selectedOutcomeId) || market.outcomes[0];
+    state.selectedOutcomes[market.id] = selectedOutcome.id;
+
+    return `
+      <div class="stack">
+        <label class="field board-select-field">
+          <span>Outcome</span>
+          <select class="board-outcome-select" data-outcome-select="${market.id}">
+            ${market.outcomes
+              .map(
+                (outcome) => `
+                  <option value="${outcome.id}" ${outcome.id === selectedOutcome.id ? "selected" : ""}>${escapeHtml(outcome.name)}</option>
+                `
+              )
+              .join("")}
+          </select>
+        </label>
+        ${renderOutcomeCard(selectedOutcome)}
+      </div>
+    `;
+  }
+
+  return `
+    <div class="stack">
+      ${market.outcomes.map((outcome) => renderOutcomeCard(outcome)).join("")}
+    </div>
   `;
 }
 
@@ -191,7 +235,15 @@ function getMarketsByCategory() {
   return Object.fromEntries(
     CATEGORY_ORDER.map((category) => [
       category,
-      state.data.markets.filter((market) => (market.category || "Outright") === category),
+      state.data.markets
+        .filter((market) => (market.category || "Outright") === category)
+        .sort((a, b) => {
+          const orderDiff = (a.sortOrder ?? 0) - (b.sortOrder ?? 0);
+          if (orderDiff !== 0) {
+            return orderDiff;
+          }
+          return a.name.localeCompare(b.name);
+        }),
     ])
   );
 }
