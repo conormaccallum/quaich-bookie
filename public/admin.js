@@ -57,6 +57,7 @@ function bindEvents() {
     await submit(async () =>
       sendJson("/api/markets", "POST", {
         name: formData.get("name"),
+        category: formData.get("category"),
         margin: Number(formData.get("margin")),
         defaultStake: Number(formData.get("defaultStake")),
         autoBalance: formData.get("autoBalance") === "on",
@@ -212,6 +213,12 @@ function renderMarketEditors() {
             <input data-market-field="name" value="${escapeHtml(market.name)}" />
           </label>
           <label class="field">
+            <span>Category</span>
+            <select data-market-field="category">
+              ${renderCategoryOptions(market.category)}
+            </select>
+          </label>
+          <label class="field">
             <span>Overround (%)</span>
             <input data-market-field="margin" type="number" step="0.1" value="${market.margin}" />
           </label>
@@ -304,6 +311,7 @@ function collectOutcomeRows(container) {
 function collectMarketEditor(card) {
   return {
     name: card.querySelector('[data-market-field="name"]').value,
+    category: card.querySelector('[data-market-field="category"]').value,
     margin: Number(card.querySelector('[data-market-field="margin"]').value),
     defaultStake: Number(card.querySelector('[data-market-field="defaultStake"]').value),
     autoBalance: card.querySelector('[data-market-field="autoBalance"]').checked,
@@ -364,4 +372,14 @@ function updateManualPriceFlag(target) {
   }
 
   row.dataset.manualPrice = target.value.trim() ? "true" : "false";
+}
+
+function renderCategoryOptions(selectedCategory) {
+  return ["Outright", "Match Bets", "Individual", "Props"]
+    .map(
+      (category) => `
+        <option value="${category}" ${selectedCategory === category ? "selected" : ""}>${category}</option>
+      `
+    )
+    .join("");
 }
