@@ -113,10 +113,12 @@ function render() {
   const activeMarkets = marketsByCategory[state.activeCategory];
   if (!activeMarkets.length) {
     elements.boardMarkets.innerHTML = `
-      <div class="empty-state">
-        <h3>No markets currently active</h3>
-        <p>There are no ${escapeHtml(state.activeCategory)} markets on the board at the moment.</p>
-      </div>
+      <article class="market-card">
+        <div class="empty-state">
+          <h3>No markets currently active</h3>
+          <p>There are no ${escapeHtml(state.activeCategory)} markets on the board at the moment.</p>
+        </div>
+      </article>
     `;
     return;
   }
@@ -201,12 +203,8 @@ function renderOutcomeCard(outcome) {
         <div class="market-outcome-main">
           ${renderTeamBadge(outcome.team || outcome.name)}
           <strong>${escapeHtml(outcome.name)}</strong>
-          <p>${exposure?.betCount || 0} bets written</p>
         </div>
         <div class="price-pill">${formatOdds(displayOdds, state.oddsFormat)}</div>
-      </div>
-      <div class="market-footer">
-        <span>${currency(exposure?.totalStaked || 0)} staked</span>
       </div>
       <div class="ticket-list">
         ${

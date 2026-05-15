@@ -442,6 +442,9 @@ h1 {
 .price-pill {
   background: linear-gradient(135deg, rgba(14, 107, 80, 0.96), rgba(8, 77, 57, 0.96));
   color: white;
+  padding: 12px 16px;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
 }
 
 .odds-toggle {
