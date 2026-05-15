@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quaich Bookie Board</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="board-page">
+    <div class="page-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Live Board</p>
+          <h1>Quaich Bookie</h1>
+          <p class="hero-copy">A simple match board for the trip. Pick a market, see the price, and see who is on each side.</p>
+        </div>
+        <div class="hero-actions">
+          <a class="nav-link" href="/admin">Open admin</a>
+          <div class="odds-toggle" id="odds-format-toggle">
+            <button class="toggle-btn active" data-format="american" type="button">American</button>
+            <button class="toggle-btn" data-format="decimal" type="button">Decimal</button>
+            <button class="toggle-btn" data-format="fractional" type="button">Fractional</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="team-banner-row">
+        <div class="team-banner team-banner-scotland">
+          <span class="team-flag flag-scotland" aria-hidden="true"></span>
+          <strong>Scotland</strong>
+        </div>
+        <div class="team-banner team-banner-usa">
+          <span class="team-flag flag-usa" aria-hidden="true"></span>
+          <strong>USA</strong>
+        </div>
+      </section>
+
+      <main class="board-grid board-grid-single">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">Markets</p>
+              <h2>Odds Board</h2>
+            </div>
+          </div>
+          <div id="board-markets" class="stack"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/shared.js"></script>
+    <script src="/board.js"></script>
+  </body>
+</html>

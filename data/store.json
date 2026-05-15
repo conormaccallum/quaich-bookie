@@ -1,0 +1,168 @@
+{
+  "bettors": [
+    {
+      "id": "b58a0a27-770f-4a7c-b507-e1702cdb7fc7",
+      "name": "Little Big Man",
+      "team": "Scotland",
+      "notes": "",
+      "createdAt": "2026-05-15T09:53:06.231Z"
+    },
+    {
+      "id": "1455d033-6219-4fb9-b47b-bf153b13484e",
+      "name": "Big Man",
+      "team": "Scotland",
+      "notes": "",
+      "createdAt": "2026-05-15T09:24:44.241Z"
+    }
+  ],
+  "markets": [
+    {
+      "id": "56fbdefc-70df-4ac8-84c0-f1d685e3dd23",
+      "name": "Top points scorer",
+      "margin": 8,
+      "defaultStake": 10,
+      "outcomes": [
+        {
+          "id": "3f14ffc1-b458-4b14-b993-6f5ac3792a02",
+          "name": "Webby",
+          "trueProbability": 6.25,
+          "offeredDecimal": 14.78
+        },
+        {
+          "id": "77b2b06a-4963-4069-8fa1-16d5a57c8f43",
+          "name": "Guvna",
+          "trueProbability": 6.23,
+          "offeredDecimal": 14.82
+        },
+        {
+          "id": "d0a8b61e-f35f-4fc0-b171-d888427c90c9",
+          "name": "Swayze",
+          "trueProbability": 6.22,
+          "offeredDecimal": 14.85
+        },
+        {
+          "id": "2273c6e5-75b2-4c7c-b38b-7e632fbc3a02",
+          "name": "Cudman",
+          "trueProbability": 6.25,
+          "offeredDecimal": 14.78
+        },
+        {
+          "id": "c9cca0d9-6688-4671-8420-5eeb8f30e670",
+          "name": "Atco",
+          "trueProbability": 6.23,
+          "offeredDecimal": 14.82
+        },
+        {
+          "id": "e7b24280-00f9-4d85-91db-94c05f161186",
+          "name": "Sheets",
+          "trueProbability": 6.22,
+          "offeredDecimal": 14.85
+        },
+        {
+          "id": "ee47a0ba-f46a-4f51-b4c6-f5584833053c",
+          "name": "Farley",
+          "trueProbability": 6.25,
+          "offeredDecimal": 14.78
+        },
+        {
+          "id": "336f498d-88c2-417e-9c9c-9be457872e1f",
+          "name": "Mundo",
+          "trueProbability": 6.23,
+          "offeredDecimal": 14.82
+        },
+        {
+          "id": "afdeef8c-4cc9-4798-bdf3-3861e9c46991",
+          "name": "Big Man",
+          "trueProbability": 6.23,
+          "offeredDecimal": 14.82
+        },
+        {
+          "id": "56adff21-f1c9-4b99-bc13-d5bdb019c507",
+          "name": "Little Big Man",
+          "trueProbability": 6.23,
+          "offeredDecimal": 14.82
+        },
+        {
+          "id": "7ad516a2-39bd-4bcf-ac71-9b18b2fbabdc",
+          "name": "Rosco",
+          "trueProbability": 6.22,
+          "offeredDecimal": 14.85
+        },
+        {
+          "id": "38830931-5bbb-40bd-8836-2ce717bdff93",
+          "name": "Wee Ronnie",
+          "trueProbability": 6.22,
+          "offeredDecimal": 14.85
+        },
+        {
+          "id": "b0a762d9-3ce9-4ba4-a170-b40c92784b1a",
+          "name": "Our Wullie",
+          "trueProbability": 6.25,
+          "offeredDecimal": 14.78
+        },
+        {
+          "id": "426128cf-089d-4c6e-ac28-636fda96b206",
+          "name": "DB",
+          "trueProbability": 6.22,
+          "offeredDecimal": 14.85
+        },
+        {
+          "id": "b7f6c808-fa3a-4571-a355-9b6a1d3bb374",
+          "name": "Miker P",
+          "trueProbability": 6.24,
+          "offeredDecimal": 14.8
+        },
+        {
+          "id": "f6e64f1b-f568-4a4c-a24a-4337d0c746ba",
+          "name": "Chucks",
+          "trueProbability": 6.25,
+          "offeredDecimal": 14.78
+        }
+      ],
+      "createdAt": "2026-05-15T09:52:04.154Z"
+    },
+    {
+      "id": "ad74858a-5cf2-441c-a57a-d54c4f1af40c",
+      "name": "Quaich 2026 - Winner",
+      "margin": 8,
+      "defaultStake": 10,
+      "outcomes": [
+        {
+          "id": "d7448d9d-ca27-4ebd-aac5-b4662a91f3da",
+          "name": "Scotland",
+          "trueProbability": 35,
+          "offeredDecimal": 2.65
+        },
+        {
+          "id": "4e2d990a-4b48-4d38-bb43-a0ced970622e",
+          "name": "USA",
+          "trueProbability": 65,
+          "offeredDecimal": 1.42
+        }
+      ],
+      "createdAt": "2026-05-15T09:35:20.382Z"
+    }
+  ],
+  "bets": [
+    {
+      "id": "fb640d1c-c87a-4229-95b4-1d4f8e761986",
+      "marketId": "56fbdefc-70df-4ac8-84c0-f1d685e3dd23",
+      "outcomeId": "7ad516a2-39bd-4bcf-ac71-9b18b2fbabdc",
+      "bettorId": "b58a0a27-770f-4a7c-b507-e1702cdb7fc7",
+      "stake": 5,
+      "oddsDecimal": 14.85,
+      "notes": "",
+      "placedAt": "2026-05-15T09:53:14.730Z"
+    },
+    {
+      "id": "64e19f7c-2a46-4711-9642-df2ade804d7a",
+      "marketId": "ad74858a-5cf2-441c-a57a-d54c4f1af40c",
+      "outcomeId": "d7448d9d-ca27-4ebd-aac5-b4662a91f3da",
+      "bettorId": "1455d033-6219-4fb9-b47b-bf153b13484e",
+      "stake": 10,
+      "oddsDecimal": 2.65,
+      "notes": "",
+      "placedAt": "2026-05-15T09:42:49.930Z"
+    }
+  ]
+}

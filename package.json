@@ -1,0 +1,15 @@
+{
+  "name": "quaich-bookie",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel",
+    "deploy:prod": "vercel --prod",
+    "db:import-json": "node scripts/import-json-to-postgres.cjs"
+  },
+  "dependencies": {
+    "postgres": "^3.4.7"
+  }
+}

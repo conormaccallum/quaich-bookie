@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quaich Bookie Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Bookmaker Console</p>
+          <h1>Admin Desk</h1>
+          <p class="hero-copy">Create bettors, build markets from your true prices, and log every wager from the trip.</p>
+        </div>
+        <div class="hero-actions">
+          <a class="nav-link" href="/board">Open board</a>
+          <button id="refresh-admin" class="secondary-btn" type="button">Refresh data</button>
+        </div>
+      </header>
+
+      <main class="main-grid admin-grid">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">Bettors</p>
+              <h2>Add punter</h2>
+            </div>
+          </div>
+          <form id="bettor-form" class="stack">
+            <label class="field">
+              <span>Name</span>
+              <input name="name" type="text" placeholder="Big Rab" required />
+            </label>
+            <label class="field">
+              <span>Team</span>
+              <select name="team">
+                <option>Scotland</option>
+                <option>USA</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Notes</span>
+              <input name="notes" type="text" placeholder="Captain, side-action addict, etc" />
+            </label>
+            <button class="primary-btn" type="submit">Add bettor</button>
+          </form>
+          <div id="bettor-list" class="stack"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">Markets</p>
+              <h2>Create market</h2>
+            </div>
+          </div>
+          <form id="market-form" class="stack">
+            <label class="field">
+              <span>Market name</span>
+              <input name="name" type="text" placeholder="Top points scorer" required />
+            </label>
+            <div class="field-grid">
+              <label class="field">
+                <span>Overround (%)</span>
+                <input name="margin" type="number" min="0" step="0.1" value="8" />
+              </label>
+              <label class="field">
+                <span>Default stake ($)</span>
+                <input name="defaultStake" type="number" min="1" step="1" value="10" />
+              </label>
+            </div>
+            <div class="field-grid">
+              <label class="field field-checkbox">
+                <span>Auto-balance from bets</span>
+                <input name="autoBalance" type="checkbox" checked />
+              </label>
+              <label class="field">
+                <span>Move sensitivity</span>
+                <input name="rebalanceSensitivity" type="number" min="0" max="5" step="0.05" value="0.75" />
+              </label>
+            </div>
+            <div class="outcome-builder">
+              <div class="outcome-builder-head">
+                <h3>Outcomes</h3>
+                <button id="add-outcome-btn" class="secondary-btn" type="button">Add outcome</button>
+              </div>
+              <div id="market-outcomes" class="stack"></div>
+            </div>
+            <button class="primary-btn" type="submit">Create market</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="panel-kicker">Bets</p>
+              <h2>Log wager</h2>
+            </div>
+          </div>
+          <form id="bet-form" class="stack">
+            <label class="field">
+              <span>Bettor</span>
+              <select id="bet-bettor" name="bettorId" required></select>
+            </label>
+            <label class="field">
+              <span>Market</span>
+              <select id="bet-market" name="marketId" required></select>
+            </label>
+            <label class="field">
+              <span>Outcome</span>
+              <select id="bet-outcome" name="outcomeId" required></select>
+            </label>
+            <div class="field-grid">
+              <label class="field">
+                <span>Stake ($)</span>
+                <input name="stake" type="number" min="1" step="1" value="10" />
+              </label>
+              <label class="field">
+                <span>Odds (decimal)</span>
+                <input id="bet-odds" name="oddsDecimal" type="number" min="1.01" step="0.01" />
+              </label>
+            </div>
+            <label class="field">
+              <span>Notes</span>
+              <input name="notes" type="text" placeholder="Pressed after the 3rd hole" />
+            </label>
+            <button class="primary-btn" type="submit">Record bet</button>
+          </form>
+        </section>
+      </main>
+
+      <section class="panel top-space">
+        <div class="panel-head">
+          <div>
+            <p class="panel-kicker">Manage Book</p>
+            <h2>Edit live markets</h2>
+          </div>
+        </div>
+        <div id="market-editor-list" class="stack"></div>
+      </section>
+    </div>
+
+    <template id="outcome-row-template">
+      <div class="outcome-row">
+        <label class="field">
+          <span>Outcome</span>
+          <input data-role="name" type="text" placeholder="Scotland" />
+        </label>
+        <label class="field">
+          <span>True chance (%)</span>
+          <input data-role="trueProbability" type="number" min="0" step="0.01" placeholder="55" />
+        </label>
+        <label class="field">
+          <span>Base odds (decimal)</span>
+          <input data-role="offeredDecimal" type="number" min="1.01" step="0.01" placeholder="1.68" />
+        </label>
+        <button class="icon-btn" data-role="remove" type="button">Remove</button>
+      </div>
+    </template>
+
+    <script src="/shared.js"></script>
+    <script src="/admin.js"></script>
+  </body>
+</html>

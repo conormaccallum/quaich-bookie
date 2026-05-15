@@ -1,0 +1,452 @@
+:root {
+  --bg: #f4efe6;
+  --bg-strong: #fbf7f0;
+  --panel: rgba(255, 252, 247, 0.92);
+  --line: rgba(31, 42, 36, 0.12);
+  --text: #1f2a24;
+  --muted: #5f6c64;
+  --green: #0e6b50;
+  --green-dark: #084d39;
+  --sand: #c67b44;
+  --danger: #a94141;
+  --shadow: 0 18px 42px rgba(65, 55, 38, 0.12);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Manrope", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(198, 123, 68, 0.15), transparent 28%),
+    radial-gradient(circle at top right, rgba(14, 107, 80, 0.18), transparent 30%),
+    linear-gradient(180deg, #fbf7f0 0%, var(--bg) 100%);
+}
+
+body.board-page {
+  background:
+    linear-gradient(180deg, rgba(251, 247, 240, 0.72) 0%, rgba(244, 239, 230, 0.8) 45%, rgba(244, 239, 230, 0.9) 100%),
+    radial-gradient(circle at top left, rgba(198, 123, 68, 0.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(14, 107, 80, 0.12), transparent 30%),
+    url("/assets/kiawah-ocean-course-background.avif") center center / cover no-repeat fixed;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.page-shell {
+  width: min(1240px, calc(100% - 24px));
+  margin: 0 auto;
+  padding: 20px 0 48px;
+}
+
+.hero,
+.panel,
+.market-card,
+.summary-card {
+  background: var(--panel);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+.hero,
+.panel,
+.market-card {
+  padding: 22px;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+
+.eyebrow,
+.panel-kicker,
+.summary-label,
+.chip {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+h1 {
+  margin-top: 8px;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 0.95;
+}
+
+.hero-copy,
+.muted-copy,
+.entity-row p,
+.market-row-main p {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.hero-actions,
+.panel-head,
+.market-card-head,
+.market-row-main,
+.market-footer,
+.entity-row,
+.outcome-builder-head,
+.market-tools {
+  display: flex;
+  align-items: center;
+}
+
+.hero-actions,
+.market-tools {
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.panel-head,
+.market-card-head,
+.market-row-main,
+.market-footer,
+.outcome-builder-head,
+.entity-row {
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.main-grid,
+.board-grid,
+.summary-grid,
+.field-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.admin-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 20px;
+}
+
+.board-grid {
+  grid-template-columns: 1.2fr 0.8fr;
+  margin-top: 20px;
+}
+
+.board-grid-single {
+  grid-template-columns: 1fr;
+}
+
+.summary-grid {
+  margin-top: 20px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.summary-card {
+  padding: 18px;
+}
+
+.summary-card strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 1.9rem;
+}
+
+.stack,
+.ticket-list {
+  display: grid;
+  gap: 14px;
+}
+
+.top-space {
+  margin-top: 20px;
+}
+
+.team-banner-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.team-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  color: white;
+}
+
+.team-banner strong {
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+}
+
+.team-banner-scotland {
+  background:
+    linear-gradient(135deg, rgba(8, 65, 135, 0.95), rgba(19, 104, 197, 0.92));
+}
+
+.team-banner-usa {
+  background:
+    linear-gradient(135deg, rgba(148, 28, 45, 0.96), rgba(23, 44, 109, 0.9));
+}
+
+.field-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.field span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--text);
+}
+
+.board-select-field {
+  max-width: 420px;
+}
+
+.board-outcome-select {
+  font-weight: 700;
+}
+
+.field-checkbox {
+  align-content: start;
+}
+
+.field-checkbox input {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  accent-color: var(--green);
+}
+
+.outcome-row,
+.market-row,
+.entity-row,
+.ticket-row {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.outcome-row {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding: 14px;
+  align-items: end;
+}
+
+.market-row {
+  padding: 14px;
+  display: grid;
+  gap: 12px;
+}
+
+.market-row-compact {
+  gap: 10px;
+}
+
+.entity-row,
+.ticket-row {
+  padding: 12px 14px;
+}
+
+.ticket-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.ticket-name,
+.market-outcome-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.team-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(31, 42, 36, 0.08);
+  color: var(--green-dark);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.team-flag {
+  position: relative;
+  display: inline-block;
+  width: 22px;
+  height: 14px;
+  border-radius: 4px;
+  overflow: hidden;
+  flex: 0 0 auto;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.flag-scotland {
+  background:
+    linear-gradient(26deg, transparent 43%, white 43%, white 57%, transparent 57%),
+    linear-gradient(-26deg, transparent 43%, white 43%, white 57%, transparent 57%),
+    #0a4ea3;
+}
+
+.flag-usa {
+  background:
+    repeating-linear-gradient(
+      180deg,
+      #b22234 0 8%,
+      #ffffff 8% 16%
+    );
+}
+
+.flag-usa::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 45%;
+  height: 58%;
+  background: #3c3b6e;
+}
+
+.chip,
+.price-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(14, 107, 80, 0.09);
+  color: var(--green-dark);
+  font-weight: 800;
+}
+
+.price-pill {
+  background: linear-gradient(135deg, rgba(14, 107, 80, 0.96), rgba(8, 77, 57, 0.96));
+  color: white;
+}
+
+.odds-toggle {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 8px;
+  background: rgba(31, 42, 36, 0.06);
+  border-radius: 999px;
+}
+
+.toggle-btn,
+.primary-btn,
+.secondary-btn,
+.icon-btn,
+.nav-link {
+  border: 0;
+  cursor: pointer;
+  padding: 12px 16px;
+  border-radius: 999px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 140ms ease, background 140ms ease;
+}
+
+.toggle-btn {
+  background: transparent;
+  color: var(--muted);
+}
+
+.toggle-btn.active,
+.primary-btn,
+.nav-link {
+  background: var(--green);
+  color: white;
+}
+
+.secondary-btn {
+  background: rgba(31, 42, 36, 0.08);
+  color: var(--text);
+}
+
+.icon-btn {
+  background: rgba(169, 65, 65, 0.12);
+  color: var(--danger);
+}
+
+.toggle-btn:hover,
+.primary-btn:hover,
+.secondary-btn:hover,
+.icon-btn:hover,
+.nav-link:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 1080px) {
+  .admin-grid,
+  .board-grid,
+  .summary-grid,
+  .team-banner-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero,
+  .panel-head,
+  .market-card-head,
+  .market-row-main,
+  .market-footer,
+  .entity-row,
+  .ticket-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .field-grid,
+  .outcome-row {
+    grid-template-columns: 1fr;
+  }
+
+  .page-shell {
+    width: min(100% - 16px, 100%);
+    padding-top: 12px;
+  }
+}
