@@ -219,8 +219,8 @@ h1 {
   padding: 14px 18px;
   border: 1px solid var(--line);
   border-radius: 16px 16px 0 0;
-  background: rgba(255, 255, 255, 0.48);
-  color: var(--muted);
+  background: rgba(233, 225, 213, 0.92);
+  color: rgba(95, 108, 100, 0.95);
   font-weight: 800;
   cursor: pointer;
   white-space: nowrap;
@@ -239,7 +239,7 @@ h1 {
 }
 
 .category-tab.active {
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(255, 252, 247, 0.92);
   color: var(--text);
   border-bottom-color: transparent;
   box-shadow: var(--shadow);
