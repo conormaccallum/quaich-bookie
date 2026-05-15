@@ -199,7 +199,7 @@ function renderOutcomeCard(outcome) {
     <div class="market-row market-row-compact">
       <div class="market-row-main">
         <div class="market-outcome-main">
-          ${renderTeamBadge(outcome.name)}
+          ${renderTeamBadge(outcome.team || outcome.name)}
           <strong>${escapeHtml(outcome.name)}</strong>
           <p>${exposure?.betCount || 0} bets written</p>
         </div>
@@ -249,6 +249,14 @@ function getMarketsByCategory() {
 }
 
 function renderTeamBadge(label) {
+  if (label === "Scotland") {
+    return '<span class="team-badge"><span class="team-flag flag-scotland" aria-hidden="true"></span>Scotland</span>';
+  }
+
+  if (label === "USA") {
+    return '<span class="team-badge"><span class="team-flag flag-usa" aria-hidden="true"></span>USA</span>';
+  }
+
   const normalized = String(label || "").toLowerCase();
 
   if (normalized.includes("scotland") || normalized.includes("scottish")) {
