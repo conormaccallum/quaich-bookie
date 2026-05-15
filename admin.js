@@ -58,6 +58,7 @@ function bindEvents() {
       sendJson("/api/markets", "POST", {
         name: formData.get("name"),
         category: formData.get("category"),
+        isActive: formData.get("isActive") === "on",
         sortOrder: Number(formData.get("sortOrder")),
         margin: Number(formData.get("margin")),
         defaultStake: Number(formData.get("defaultStake")),
@@ -219,6 +220,10 @@ function renderMarketEditors() {
               ${renderCategoryOptions(market.category)}
             </select>
           </label>
+          <label class="field field-checkbox">
+            <span>Show on board</span>
+            <input data-market-field="isActive" type="checkbox" ${market.isActive !== false ? "checked" : ""} />
+          </label>
           <label class="field">
             <span>Sort order</span>
             <input data-market-field="sortOrder" type="number" step="1" value="${market.sortOrder ?? 0}" />
@@ -325,6 +330,7 @@ function collectMarketEditor(card) {
   return {
     name: card.querySelector('[data-market-field="name"]').value,
     category: card.querySelector('[data-market-field="category"]').value,
+    isActive: card.querySelector('[data-market-field="isActive"]').checked,
     sortOrder: Number(card.querySelector('[data-market-field="sortOrder"]').value),
     margin: Number(card.querySelector('[data-market-field="margin"]').value),
     defaultStake: Number(card.querySelector('[data-market-field="defaultStake"]').value),

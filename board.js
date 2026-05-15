@@ -234,7 +234,7 @@ function getMarketsByCategory() {
     CATEGORY_ORDER.map((category) => [
       category,
       state.data.markets
-        .filter((market) => (market.category || "Outright") === category)
+        .filter((market) => market.isActive !== false && (market.category || "Outright") === category)
         .sort((a, b) => {
           const orderDiff = (a.sortOrder ?? 0) - (b.sortOrder ?? 0);
           if (orderDiff !== 0) {
